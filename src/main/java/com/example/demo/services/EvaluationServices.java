@@ -29,6 +29,10 @@ public class EvaluationServices {
     return evaluationRepository.findById(id).orElse(null);
   }
 
+  public List<Evaluation> getEvaluationsByWeekly(int weekly) {
+    return evaluationRepository.findByWeekly(weekly);
+  }
+
   public Evaluation updateEvaluationById(Evaluation evaluation) {
     Optional<Evaluation> evaluationFound = evaluationRepository.findById(evaluation.getId());
 
@@ -36,6 +40,7 @@ public class EvaluationServices {
       Evaluation evaluationUpdate = evaluationFound.get();
       evaluationUpdate.setWeekly(evaluation.getWeekly());
       evaluationUpdate.setTraineeAccount(evaluation.getTraineeAccount());
+      evaluationUpdate.setTraineeName(evaluation.getTraineeName());
       evaluationUpdate.setTasks(evaluation.getTasks());
       evaluationUpdate.setProcessCompliance(evaluation.getProcessCompliance());
       evaluationUpdate.setTimeliness(evaluation.getTimeliness());
@@ -50,6 +55,7 @@ public class EvaluationServices {
       evaluationUpdate.setPenalty(evaluation.getPenalty());
       evaluationUpdate.setBonusPenaltyReason(evaluation.getBonusPenaltyReason());
       evaluationUpdate.setFinalGrade(evaluation.getFinalGrade());
+      evaluationUpdate.setStatus(evaluation.getStatus());
 
       return evaluationRepository.save(evaluationUpdate);
     } else {

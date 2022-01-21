@@ -14,6 +14,9 @@ public class Evaluation {
   @Column(name = "trainee_account")
   private String trainee_account;
 
+  @Column(name = "trainee_name")
+  private String trainee_name;
+
   @Column(name = "tasks")
   private String tasks;
 
@@ -53,7 +56,11 @@ public class Evaluation {
   @Column(name = "bonus_penalty_reason")
   private String bonus_penalty_reason;
 
-  private int final_grade;
+  @Column(name = "status")
+  private String status;
+
+  @Column(name = "final_grade")
+  private String final_grade;
 
 
   public int getId() {
@@ -78,6 +85,14 @@ public class Evaluation {
 
   public void setTraineeAccount(String trainee_account) {
     this.trainee_account = trainee_account;
+  }
+
+  public String getTraineeName() {
+    return trainee_name;
+  }
+
+  public void setTraineeName(String trainee_name) {
+    this.trainee_name = trainee_name;
   }
 
   public String getTasks() {
@@ -184,12 +199,20 @@ public class Evaluation {
     this.bonus_penalty_reason = bonus_penalty_reason;
   }
 
-  public int getFinalGrade() {
+  public String getFinalGrade() {
     return final_grade;
   }
 
-  public void setFinalGrade(int final_grade) {
+  public void setFinalGrade(String final_grade) {
     this.final_grade = final_grade;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
   @Override
@@ -198,6 +221,7 @@ public class Evaluation {
             "id=" + id +
             ", weekly=" + weekly +
             ", trainee_account='" + trainee_account + '\'' +
+            ", trainee_name='" + trainee_name + '\'' +
             ", tasks='" + tasks + '\'' +
             ", process_compliance='" + process_compliance + '\'' +
             ", timeliness='" + timeliness + '\'' +
@@ -211,7 +235,8 @@ public class Evaluation {
             ", bonus='" + bonus + '\'' +
             ", penalty='" + penalty + '\'' +
             ", bonus_penalty_reason='" + bonus_penalty_reason + '\'' +
-            ", final_grade=" + final_grade +
+            ", final_grade=" + final_grade + '\'' +
+            ", status=" + status +
             '}';
   }
 }

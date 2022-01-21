@@ -22,9 +22,14 @@ public class EvaluationController {
     return ResponseEntity.ok(services.getEvaluationList());
   }
 
-  @GetMapping("/evaluations/{id}")
+  @GetMapping("/evaluationById/{id}")
   public ResponseEntity<Evaluation> getEvaluationById(@PathVariable("id") int id) {
     return ResponseEntity.ok().body(this.services.getEvaluationById(id));
+  }
+
+  @GetMapping("/evaluationsByWeekly/{weekly}")
+  public ResponseEntity<List<Evaluation>> getEvaluationsByWeekly(@PathVariable("weekly") int weekly) {
+    return ResponseEntity.ok().body(this.services.getEvaluationsByWeekly(weekly));
   }
 
   @PostMapping("/addEvaluation")
